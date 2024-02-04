@@ -11,6 +11,16 @@
             padding: 0;
         }
 
+        @font-face {
+            font-family: 'bradley';
+            src: url(BRADHI.ttf) format('truetype');
+        }
+
+        .bradleyFont {
+            font-family: 'bradley', sans-serif;
+            font-size: 25px;
+        }
+
         .container {
             display: flex;
             height: 100vh;
@@ -65,7 +75,7 @@
                 <input type="number" id="energyInput" required>
                 <button type="button" onclick="addTask(),displayTasks()">Add Task</button>
             </form>
-            <ul id="taskList">
+            <ul id="taskList" class="bradleyFont">
 
             </ul>
             <form id="taskGone">

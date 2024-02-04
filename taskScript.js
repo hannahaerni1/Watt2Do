@@ -29,7 +29,7 @@ function displayTasks() {
         newTask.type = "checkbox";
         var newTaskLabel = document.createElement('label');
         newTaskLabel.htmlFor = newTask;
-        newTaskLabel.appendChild(document.createTextNode(listOfTasks[i] + " " + listOfEnergy[i]));
+        newTaskLabel.appendChild(document.createTextNode(listOfTasks[i] + " ~ -" + listOfEnergy[i] + "%"));
         var space = document.createElement('br');
         taskList.appendChild(newTask);
         taskList.appendChild(newTaskLabel);
@@ -50,7 +50,7 @@ function displayTasks() {
         newTask.type = "checkbox";
         var newTaskLabel = document.createElement('label');
         newTaskLabel.htmlFor = newTask;
-        newTaskLabel.appendChild(document.createTextNode(listOfTasksNo[i] + " " + listOfEnergyNo[i]));
+        newTaskLabel.appendChild(document.createTextNode(listOfTasksNo[i] + " ~ -" + listOfEnergyNo[i] + "%"));
         var space = document.createElement('br');
         taskList.appendChild(newTask);
         taskList.appendChild(newTaskLabel);

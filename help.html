@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Column Website</title>
+    <style>
+        header {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 3px;
+        }
+
+        body {
+            font-family: didot, serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        @font-face {
+            font-family: 'bosk';
+            src: url(Bosk.ttf) format('truetype');
+        }
+
+        .boskFont {
+            font-family: 'bosk', sans-serif;
+            font-size: 25px;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .left-column {
+            flex: 1;
+            background-color: #173056;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .right-column {
+            flex: 2;
+            background-color: #eceded;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .helpImage {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            padding: 25px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <center><h1>Watt2Do</h1></center>
+        <a href="help.html"><img src="help.png" alt="Help Icon" class="helpImage" 
+            title="Need more help? Click to see detailed instructions!"></a>
+        <br>
+    </header>
+    <div class="container">
+        <div class="left-column">
+            <p>left</p>
+        </div>
+
+        <div class="right-column">
+            <p>right</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -38,9 +38,9 @@ function displayTasks() {
 
 function changeEnergy()
 {
-    var energyNum = newEnergy.value.trim();
-    if (energyNum <= 100 && energyNum >= 0){
-        userEnergy = energyNum;
+    var currentEnergy = newEnergy.value.trim();
+    if (currentEnergy <= 100 && currentEnergy >= 0){
+        userEnergy = currentEnergy;
     }
 
     newEnergy.value = "";

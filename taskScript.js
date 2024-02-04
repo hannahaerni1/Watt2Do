@@ -100,13 +100,22 @@ function removeTask()
     var taskList = document.getElementById("taskList");
     
     var tasks = taskList.querySelectorAll('input');
+    console.log(tasks);
     var taskLen = tasks.length;
     for (let x = 0; x < taskLen; x++)
     {
         if (tasks[x].checked)
         {
-            listOfTasks.splice(x, 1);
-            listOfEnergy.splice(x, 1);
+            if (x > listOfTasks.length - 1){
+                x -= listOfTasks.length;
+                listOfTasksNo.splice(x, 1);
+                listOfEnergyNo.splice(x, 1);
+            }
+            else {
+                listOfTasks.splice(x, 1);
+                listOfEnergy.splice(x, 1);
+            }
+            
             x--;
             taskLen--;
         }

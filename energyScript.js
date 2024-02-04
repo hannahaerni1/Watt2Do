@@ -40,7 +40,11 @@ function drawBattery()
 drawBattery();
 
 //ctx.fillStyle = "#008000";
-ctx.fillStyle = "#EEE8E5";
+var grdStart = ctx.createLinearGradient(0, 30 + chargeHeight, 0, 300);
+grdStart.addColorStop(0,"#d9babf");
+grdStart.addColorStop(1,"#EEE8E5");
+ctx.fillStyle = grdStart;
+
 drawRoundedRectangle(10,30 + chargeHeight,130,260 - chargeHeight,10);
 
 function changeEnergy()

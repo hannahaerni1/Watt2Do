@@ -25,7 +25,9 @@ function displayTasks() {
     for (let i = 0; i < listOfTasks.length; i++) {
         var newTask = document.createElement('li');
         newTask.textContent = listOfTasks[i] + " " + listOfEnergy[i];
-
         taskList.appendChild(newTask);
+        var babyTask = taskList.lastChild();
+        babyTask.color = "red";
+        babyTask.type = "checkbox";
     }
 }

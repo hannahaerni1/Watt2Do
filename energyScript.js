@@ -31,7 +31,8 @@ function drawBattery()
 
 drawBattery();
 
-ctx.fillStyle = "#008000";
+//ctx.fillStyle = "#008000";
+ctx.fillStyle = "#FFFF00";
 drawRoundedRectangle(10,30 + chargeHeight,130,260 - chargeHeight,10);
 
 function changeEnergy()
@@ -44,7 +45,20 @@ function changeEnergy()
 
         drawBattery();
 
-        ctx.fillStyle = "#008000";
+        if (userEnergy <= 25)
+        {
+            ctx.fillStyle = "#FF0000";
+        }
+        else if (userEnergy <= 50)
+        {
+            ctx.fillStyle = "#FFFF00";
+        }
+        else
+        {
+            ctx.fillStyle = "#008000";
+        }
+
+        
         drawRoundedRectangle(10,30 + chargeHeight,130,260 - chargeHeight,10);
 
     }

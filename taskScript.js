@@ -2,6 +2,7 @@ var listOfTasks = [];
 var listOfEnergy = [];
 var listOfTasksNo = [];
 var listOfEnergyNo = [];
+var wattSpeaks = ["Good job!", "Keep up the good work!", "You're doing great!"];
 
 function addTask() {
     var taskInput = document.getElementById("taskInput");
@@ -218,4 +219,8 @@ function calculateTask() {
     
     document.getElementById("energyPercent").innerHTML = userEnergy + "%";
     changeEnergy();
+}
+
+function wattersonSpeaks() {
+
 }

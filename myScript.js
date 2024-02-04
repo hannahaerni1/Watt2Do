@@ -1,6 +1,6 @@
 const listOfTasks = [];
 const listOfEnergy = [];
-const userEnergy = 50;
+var userEnergy = 50;
 
 function addTask() {
     var taskInput = document.getElementById("taskInput");
@@ -44,9 +44,9 @@ function changeEnergy()
     }
 
     newEnergy.value = "";
+
     
-    var energyPercent = document.getElementById("energyPercent");
-    energyPercent.innerText = userEnergy + "%";
+    document.getElementById("energyPercent").innerHTML = userEnergy + "%";
 }
 
 function removeTask()

@@ -222,5 +222,7 @@ function calculateTask() {
 }
 
 function wattersonSpeaks() {
-
+    var speak = Math.floor(Math.random() * 3);
+    var words = wattSpeaks[speak];
+    alert(words);
 }

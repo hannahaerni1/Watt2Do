@@ -1,6 +1,7 @@
 var listOfTasks = [];
 var listOfEnergy = [];
-var indexTooMuchEnergy = -1;
+var listOfTasksNo = [];
+var listOfEnergyNo = [];
 
 function addTask() {
     var taskInput = document.getElementById("taskInput");
@@ -26,7 +27,19 @@ function displayTasks() {
     sortTasks();
 
     for (let i = 0; i < listOfTasks.length; i++) {
-        if (i == indexTooMuchEnergy){
+        var newTask = document.createElement('input');
+        newTask.type = "checkbox";
+        var newTaskLabel = document.createElement('label');
+        newTaskLabel.htmlFor = newTask;
+        newTaskLabel.appendChild(document.createTextNode(listOfTasks[i] + " " + listOfEnergy[i]));
+        var space = document.createElement('br');
+        taskList.appendChild(newTask);
+        taskList.appendChild(newTaskLabel);
+        taskList.appendChild(space);
+    }
+
+    for (let i = 0; i < listOfTasksNo.length; i++) {
+        if (i == 0) {
             var spacer = document.createElement('br');
             var line = document.createElement('hr');
             var header = document.createElement('h4');
@@ -39,7 +52,7 @@ function displayTasks() {
         newTask.type = "checkbox";
         var newTaskLabel = document.createElement('label');
         newTaskLabel.htmlFor = newTask;
-        newTaskLabel.appendChild(document.createTextNode(listOfTasks[i] + " " + listOfEnergy[i]));
+        newTaskLabel.appendChild(document.createTextNode(listOfTasksNo[i] + " " + listOfEnergyNo[i]));
         var space = document.createElement('br');
         taskList.appendChild(newTask);
         taskList.appendChild(newTaskLabel);
@@ -48,28 +61,30 @@ function displayTasks() {
 }
 
 function sortTasks() {
+    for (let i = 0; i < listOfTasksNo.length; i++) {
+        listOfTasks.push(listOfTasksNo[i]);
+        listOfEnergy.push(listOfEnergyNo[i]);
+    }
+    listOfTasksNo = [];
+    listOfEnergyNo = [];
     var newTaskList = [];
     var newEnergyList = [];
+    indexTooMuchEnergy = -1;
     
     var noMoreLeft = false;
     while (listOfTasks.length != 0) {
         var mostEnergy = 0;
         for (let i = 0; i < listOfTasks.length; i++) {
-            if (!noMoreLeft){
-                if (listOfEnergy[i] > listOfEnergy[mostEnergy] && listOfEnergy[i] <= userEnergy) {
-                    mostEnergy = i;
-                }
-            }
-            else {
-                if (listOfEnergy[i] > listOfEnergy[mostEnergy]) {
-                    mostEnergy = i;
-                }
+            if (listOfEnergy[i] > listOfEnergy[mostEnergy] && listOfEnergy[i] <= userEnergy) {
+                mostEnergy = i;
             }
             if (i == listOfTasks.length - 1 && listOfEnergy[mostEnergy] > userEnergy && !noMoreLeft){
                 noMoreLeft = true;
-                indexTooMuchEnergy = newTaskList.length;
-                i = 0;
             }
+        }
+        if (noMoreLeft)
+        {
+            break;
         }
         newTaskList.push(listOfTasks[mostEnergy]);
         newEnergyList.push(listOfEnergy[mostEnergy]);
@@ -77,8 +92,17 @@ function sortTasks() {
         listOfEnergy.splice(mostEnergy, 1);
     }
 
-    if (!noMoreLeft){
-        indexTooMuchEnergy = -1;
+    while (listOfTasks.length != 0) {
+        var mostEnergy = 0;
+        for (let i = 0; i < listOfTasks.length; i++) {
+            if (listOfEnergy[i] > listOfEnergy[mostEnergy]) {
+                mostEnergy = i;
+            }
+        }
+        listOfTasksNo.push(listOfTasks[mostEnergy]);
+        listOfEnergyNo.push(listOfEnergy[mostEnergy]);
+        listOfTasks.splice(mostEnergy, 1);
+        listOfEnergy.splice(mostEnergy, 1);
     }
 
     listOfTasks = newTaskList;

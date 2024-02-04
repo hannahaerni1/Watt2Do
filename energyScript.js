@@ -57,7 +57,7 @@ function changeEnergy()
         }
         else
         {
-            ctx.fillStyle = "#C0DAEF";
+            ctx.fillStyle = "#aad9ff";
         }
 
         

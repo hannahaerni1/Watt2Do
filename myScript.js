@@ -1,5 +1,6 @@
 const listOfTasks = [];
 const listOfEnergy = [];
+const userEnergy = 50;
 
 function addTask() {
     var taskInput = document.getElementById("taskInput");
@@ -37,8 +38,21 @@ function displayTasks() {
 
 function changeEnergy()
 {
-    var newEnergy = newEnergy.value.trim();
+    var energyNum = newEnergy.value.trim();
+    if (energyNum <= 100 && energyNum >= 0){
+        userEnergy = energyNum;
+    }
 
+    newEnergy.value = "";
+    
+    var energyPercent = document.getElementById("energyPercent");
+    while (energyPercent.hasChildNodes()) {
+        energyPercent.removeChild(energyPercent.firstChild);
+    }
+
+    var newEnergyString = document.createElement("p");
+    newEnergyString.textContent = userEnergy + "%";
+    energyPercent.appendChild(newEnergyString);
 }
 
 function removeTask()

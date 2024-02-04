@@ -100,7 +100,6 @@ function removeTask()
     var taskList = document.getElementById("taskList");
     
     var tasks = taskList.querySelectorAll('input');
-    console.log(tasks);
     var taskLen = tasks.length;
     for (let x = 0; x < taskLen; x++)
     {
@@ -115,7 +114,7 @@ function removeTask()
                 listOfTasks.splice(x, 1);
                 listOfEnergy.splice(x, 1);
             }
-            
+
             x--;
             taskLen--;
         }

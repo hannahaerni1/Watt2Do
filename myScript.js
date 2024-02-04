@@ -57,3 +57,8 @@ function removeTask()
 
     }
 }
+
+const battery = document.getElementById("battery");
+const ctx = battery.getContext("2d");
+
+ctx.fillRect(20, 20, 150, 100);

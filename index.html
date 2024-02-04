@@ -6,8 +6,8 @@
     <title>Two Column Website</title>
     <style>
         header {
-            background-color: #000000;
-            color: #ffffff;
+            background-color: #5b617e;
+            color: #effffd;
             padding: 3px;
         }
 
@@ -15,6 +15,13 @@
             font-family: didot, serif;
             margin: 0;
             padding: 0;
+            transition: height 0.5s ease-in-out;
+        }
+
+        footer {
+            background-color: #5b617e;
+            color: #effffd;
+            padding: 3px;
         }
 
         @font-face {
@@ -29,7 +36,7 @@
 
         .container {
             display: flex;
-            height: 100vh;
+            transition: height 0.5s ease-in-out;
         }
 
         .left-column {
@@ -80,7 +87,7 @@
                 <input type="number" id="newEnergy" required>
                 <button type="button" 
                     title="Click this button after you have filled in the field on the left side from 0 to 100." 
-                    onclick="buttonEnergy(),displayTasks()">Change Energy
+                    onclick="clearIssueList(),buttonEnergy(),displayTasks()">Change Energy
                 </button>
             </form></center>
         </div>
@@ -93,6 +100,9 @@
                 needed to complete the task in the second field. The energy will be shown as a percent, 
                 so be sure to make the number between 1 and 99.
             </p>
+            <ul id="issueCenter">
+
+            </ul>
             <form id="taskForm">
                 <label for="taskList">New Task: </label>
                 <input type="text" title="Input the task title here." id="taskInput" required>
@@ -101,20 +111,30 @@
                     id="energyInput" required>
                 <button type="button" 
                     title="Click this button once you have both fields to the left." 
-                    onclick="addTask(),displayTasks()">Add Task
+                    onclick="clearIssueList(),addTask(),displayTasks()">Add Task
                 </button>
             </form>
+            <ul id="boosterList" class="boskFont">
+
+            </ul>
             <ul id="taskList" class="boskFont">
 
             </ul>
             <form id="taskGone">
-                <button type="button" onclick="calculateTask(), displayTasks()">Completed Tasks</button>
-                <button type="button" onclick="removeTask(), displayTasks()">Delete Tasks</button>
+                <button type="button" 
+                    title="Click on this button once you have selected the tasks you have completed." 
+                    onclick="clearIssueList(),calculateTask(), displayTasks()">Completed Tasks
+                </button>
+                <button type="button" 
+                    title="Click on this button once you have selected the tasks you want to delete." 
+                    onclick="clearIssueList(),removeTask(), displayTasks()">Delete Tasks
+                </button>
             </form>
             <script src="taskScript.js"></script>
             <script src="energyScript.js"></script>
+            <script src="boosterScript.js"></script>
         </div>
     </div>
-
 </body>
+<footer><p style="padding: 10px; text-align: center;">Make sure to take care of yourself.</p></footer>
 </html>

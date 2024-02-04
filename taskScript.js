@@ -8,9 +8,34 @@ function addTask() {
     var taskText = taskInput.value.trim();
     var energyNum = energyInput.value.trim();
 
-    if (taskText !== "" && energyNum > 0 && energyNum < 100) {
+    if (taskText !== "" && energyNum > 0 && energyNum < 100 && taskText.length <= 56) {
         listOfTasks.push(taskText);
         listOfEnergy.push(energyNum);
+    }
+    if (taskText == "") {
+        var reportIssue = document.getElementById("issueCenter");
+        var issue = document.createElement('label');
+        issue.appendChild(document.createTextNode("No title for task."));
+        var space = document.createElement('br');
+        reportIssue.appendChild(issue);
+        reportIssue.appendChild(space);
+    }
+    if (energyNum <= 0 || energyNum >= 100) {
+        var reportIssue = document.getElementById("issueCenter");
+        var issue = document.createElement('label');
+        issue.appendChild(document.createTextNode("Energy level out of bounds."));
+        var space = document.createElement('br');
+        reportIssue.appendChild(issue);
+        reportIssue.appendChild(space);
+    }
+    if (taskText.length > 56)
+    {
+        var reportIssue = document.getElementById("issueCenter");
+        var issue = document.createElement('label');
+        issue.appendChild(document.createTextNode("Too many characters in title, please shorten."));
+        var space = document.createElement('br');
+        reportIssue.appendChild(issue);
+        reportIssue.appendChild(space);
     }
     taskInput.value = "";
     energyInput.value = "";
@@ -23,6 +48,13 @@ function displayTasks() {
     }
 
     sortTasks();
+
+    if (userEnergy <= 25 || (listOfTasks.length < listOfTasksNo.length && listOfTasks.length < 3)){
+        energyNeeded();
+    }
+    else {
+        energyNotNeeded();
+    }
 
     for (let i = 0; i < listOfTasks.length; i++) {
         var newTask = document.createElement('input');
@@ -51,6 +83,7 @@ function displayTasks() {
         var newTaskLabel = document.createElement('label');
         newTaskLabel.htmlFor = newTask;
         newTaskLabel.appendChild(document.createTextNode(listOfTasksNo[i] + "ᅟᅟᅟᅟ-" + listOfEnergyNo[i] + "%"));
+        newTaskLabel.style.color = "#93686f";
         var space = document.createElement('br');
         taskList.appendChild(newTask);
         taskList.appendChild(newTaskLabel);
@@ -127,13 +160,17 @@ function removeTask()
         listOfTasksNo.splice(deleteIndex, 1);
         listOfEnergyNo.splice(deleteIndex, 1);
     }
+
+    isChecked();
 }
 
 function calculateTask() {
+    calculateBooster();
     var taskList = document.getElementById("taskList");
     
     var tasks = taskList.querySelectorAll('input');
     var taskCalculateIndex = [];
+    var issue = false;
     for (let x = 0; x < tasks.length; x++)
     {
         if (tasks[x].checked)
@@ -141,8 +178,19 @@ function calculateTask() {
             if (x < listOfTasks.length){
                 taskCalculateIndex.push(x);
             }
+            else {
+                issue = true;
+            }
         }
+    }
 
+    if (issue) {
+        var reportIssue = document.getElementById("issueCenter");
+        var issue = document.createElement('label');
+        issue.appendChild(document.createTextNode('Cannot complete tasks under "Not Enough Energy".'));
+        var space = document.createElement('br');
+        reportIssue.appendChild(issue);
+        reportIssue.appendChild(space);
     }
 
     var sum = 0;
@@ -155,10 +203,19 @@ function calculateTask() {
         for (let i = taskCalculateIndex.length - 1; i >= 0; i--) {
             var deleteIndex = Number.parseInt(taskCalculateIndex[i]);
             userEnergy = userEnergy - listOfEnergy[i];
-            document.getElementById("energyPercent").innerHTML = userEnergy + "%";
-            changeEnergy();
             listOfTasks.splice(deleteIndex, 1);
             listOfEnergy.splice(deleteIndex, 1);
         }
     }
+    else {
+        var reportIssue = document.getElementById("issueCenter");
+        var issue = document.createElement('label');
+        issue.appendChild(document.createTextNode("Not enough energy to complete all tasks."));
+        var space = document.createElement('br');
+        reportIssue.appendChild(issue);
+        reportIssue.appendChild(space);
+    }
+    
+    document.getElementById("energyPercent").innerHTML = userEnergy + "%";
+    changeEnergy();
 }

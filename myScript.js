@@ -41,11 +41,12 @@ function removeTask()
     
     const tasks = taskList.querySelectorAll('input');
 
-    for (let item in tasks)
+    for (let x = 0; x < tasks.length; x++)
     {
-        if (item.checked)
+        if (tasks[x].checked)
         {
-            
+            listOfTasks.splice(x * 3, 3);
+            listOfEnergy.splice(x * 3, 3);
         }
 
     }

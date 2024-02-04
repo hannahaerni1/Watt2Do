@@ -37,7 +37,7 @@ function displayTasks() {
 
 function changeEnergy()
 {
-    var newEnergy = newEnergy.value.trim()
+    var newEnergy = newEnergy.value.trim();
 
 }
 

@@ -4,7 +4,7 @@ const listOfEnergy = [];
 function addTask() {
     var taskInput = document.getElementById("taskInput");
     var taskText = taskInput.value.trim();
-    var energyNum =energyInput.value.trim();
+    var energyNum = energyInput.value.trim();
 
     // Check if the input is not empty
     if (taskText !== "") {
@@ -33,6 +33,12 @@ function displayTasks() {
         taskList.appendChild(newTaskLabel);
         taskList.appendChild(space);
     }
+}
+
+function changeEnergy()
+{
+    var newEnergy = newEnergy.value.trim()
+
 }
 
 function removeTask()

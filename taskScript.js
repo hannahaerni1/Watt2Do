@@ -121,3 +121,26 @@ function removeTask()
 
     }
 }
+
+function calculateTask() {
+    var taskList = document.getElementById("taskList");
+    
+    var tasks = taskList.querySelectorAll('input');
+    var taskLen = tasks.length;
+    for (let x = 0; x < taskLen; x++)
+    {
+        if (tasks[x].checked)
+        {
+            if (x < listOfTasks.length){
+                userEnergy = userEnergy - listOfEnergy[x];
+                document.getElementById("energyPercent").innerHTML = userEnergy + "%";
+                changeEnergy();
+                listOfTasks.splice(x, 1);
+                listOfEnergy.splice(x, 1);
+                x--;
+                taskLen--;
+            }
+        }
+
+    }
+}

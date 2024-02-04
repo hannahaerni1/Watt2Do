@@ -47,45 +47,46 @@ ctx.fillStyle = grdStart;
 
 drawRoundedRectangle(10,30 + chargeHeight,130,260 - chargeHeight,10);
 
-function changeEnergy()
-{
+function buttonEnergy(){
     var currentEnergy = newEnergy.value.trim();
     if (currentEnergy <= 100 && currentEnergy >= 0){
         userEnergy = currentEnergy;
-        chargeHeight = 260 * (1 - userEnergy/100);
-        ctx.clearRect(0,0,150,300);
-
-        drawBattery();
-        var grd = ctx.createLinearGradient(0, 30 + chargeHeight, 0, 300);
-        if (userEnergy <= 25)
-        {
-            grd.addColorStop(0,"#d7a3b2");
-            grd.addColorStop(1,"#F4CAD5");
-        }
-        else if (userEnergy <= 50)
-        {
-            
-
-            grd.addColorStop(0,"#d9babf");
-            grd.addColorStop(1,"#EEE8E5");
-           
-        }
-        else
-        {
-            grd.addColorStop(0,"#7ba6df");
-            grd.addColorStop(1,"#aad9ff");
-           
-        }
-        ctx.fillStyle = grd;
-        
-        drawRoundedRectangle(10,30 + chargeHeight,130,260 - chargeHeight,10);
-
+        changeEnergy();
     }
 
     newEnergy.value = "";
-
-    
     document.getElementById("energyPercent").innerHTML = userEnergy + "%";
+}
+
+function changeEnergy()
+{
+    chargeHeight = 260 * (1 - userEnergy/100);
+       ctx.clearRect(0,0,150,300);
+
+    drawBattery();
+    var grd = ctx.createLinearGradient(0, 30 + chargeHeight, 0, 300);
+    if (userEnergy <= 25)
+    {
+        grd.addColorStop(0,"#d7a3b2");
+        grd.addColorStop(1,"#F4CAD5");
+    }
+    else if (userEnergy <= 50)
+    {
+            
+
+        grd.addColorStop(0,"#d9babf");
+        grd.addColorStop(1,"#EEE8E5");
+           
+    }
+    else
+    {
+        grd.addColorStop(0,"#7ba6df");
+        grd.addColorStop(1,"#aad9ff");
+           
+    }
+    ctx.fillStyle = grd;
+        
+    drawRoundedRectangle(10,30 + chargeHeight,130,260 - chargeHeight,10);
 }
 
 

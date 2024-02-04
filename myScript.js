@@ -34,3 +34,19 @@ function displayTasks() {
         taskList.appendChild(space);
     }
 }
+
+function removeTask()
+{
+    var taskList = document.getElementById("taskList");
+    
+    const tasks = taskList.querySelectorAll('input');
+
+    for (let item in tasks)
+    {
+        if (item.checked)
+        {
+            
+        }
+
+    }
+}

@@ -8,7 +8,7 @@ function addTask() {
     var energyNum = energyInput.value.trim();
 
     // Check if the input is not empty
-    if (taskText !== "") {
+    if (taskText !== "" && energyNum > 0 && energyNum < 100) {
         // Create a new list item
         listOfTasks.push(taskText);
         listOfEnergy.push(energyNum);

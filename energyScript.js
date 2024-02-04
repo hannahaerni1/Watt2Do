@@ -24,7 +24,7 @@ function drawRoundedRectangle(x, y, width, height, cornerRadius) {
 
 function drawBattery()
 {
-    ctx.fillStyle = "#3498db";
+    ctx.fillStyle = "#9CAEE8";
     drawRoundedRectangle(0,20,150,280,15);
     drawRoundedRectangle(37.5,0,75,30,10);  
 }
@@ -32,7 +32,7 @@ function drawBattery()
 drawBattery();
 
 //ctx.fillStyle = "#008000";
-ctx.fillStyle = "#FFFF00";
+ctx.fillStyle = "#EEE8E5";
 drawRoundedRectangle(10,30 + chargeHeight,130,260 - chargeHeight,10);
 
 function changeEnergy()
@@ -47,15 +47,15 @@ function changeEnergy()
 
         if (userEnergy <= 25)
         {
-            ctx.fillStyle = "#FF0000";
+            ctx.fillStyle = "#F4CAD5";
         }
         else if (userEnergy <= 50)
         {
-            ctx.fillStyle = "#FFFF00";
+            ctx.fillStyle = "#EEE8E5";
         }
         else
         {
-            ctx.fillStyle = "#008000";
+            ctx.fillStyle = "#C0DAEF";
         }
 
         

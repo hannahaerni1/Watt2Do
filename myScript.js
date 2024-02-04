@@ -26,9 +26,11 @@ function displayTasks() {
         var newTask = document.createElement('input');
         newTask.type = "checkbox";
         var newTaskLabel = document.createElement('label');
-        label = listOfTasks[i] + " " + listOfEnergy[i];
+        newTaskLabel.htmlFor = newTask;
+        newTaskLabel.appendChild(document.createTextNode(listOfTasks[i] + " " + listOfEnergy[i]));
+        var space = document.createElement('br');
         taskList.appendChild(newTask);
-        var babyTask = taskList.lastChild;
-        babyTask.style.color = "red";
+        taskList.appendChild(newTaskLabel);
+        taskList.appendChild(space);
     }
 }

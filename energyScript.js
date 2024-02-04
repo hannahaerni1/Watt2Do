@@ -24,9 +24,15 @@ function drawRoundedRectangle(x, y, width, height, cornerRadius) {
 
 function drawBattery()
 {
-    ctx.fillStyle = "#9CAEE8";
+    //#d5daf2
+    var battGrad = ctx.createLinearGradient(0,0,0,300);
+    battGrad.addColorStop(1,"#9CAEE8");
+    battGrad.addColorStop(0,"#d5daf2");
+    ctx.fillStyle = battGrad;
     drawRoundedRectangle(0,20,150,280,15);
     drawRoundedRectangle(37.5,0,75,30,10);  
+    ctx.fillStyle = "#374c89";
+    drawRoundedRectangle(7,27,136,266,13);
     ctx.fillStyle = "#5a70b0";
     drawRoundedRectangle(10,30,130,260,10);
 }
@@ -46,20 +52,27 @@ function changeEnergy()
         ctx.clearRect(0,0,150,300);
 
         drawBattery();
-
+        var grd = ctx.createLinearGradient(0, 30 + chargeHeight, 0, 300);
         if (userEnergy <= 25)
         {
-            ctx.fillStyle = "#F4CAD5";
+            grd.addColorStop(0,"#d7a3b2");
+            grd.addColorStop(1,"#F4CAD5");
         }
         else if (userEnergy <= 50)
         {
-            ctx.fillStyle = "#EEE8E5";
+            
+
+            grd.addColorStop(0,"#d9babf");
+            grd.addColorStop(1,"#EEE8E5");
+           
         }
         else
         {
-            ctx.fillStyle = "#aad9ff";
+            grd.addColorStop(0,"#7ba6df");
+            grd.addColorStop(1,"#aad9ff");
+           
         }
-
+        ctx.fillStyle = grd;
         
         drawRoundedRectangle(10,30 + chargeHeight,130,260 - chargeHeight,10);
 

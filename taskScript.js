@@ -8,9 +8,7 @@ function addTask() {
     var taskText = taskInput.value.trim();
     var energyNum = energyInput.value.trim();
 
-    // Check if the input is not empty
     if (taskText !== "" && energyNum > 0 && energyNum < 100) {
-        // Create a new list item
         listOfTasks.push(taskText);
         listOfEnergy.push(energyNum);
     }
@@ -65,33 +63,11 @@ function sortTasks() {
         listOfTasks.push(listOfTasksNo[i]);
         listOfEnergy.push(listOfEnergyNo[i]);
     }
-    listOfTasksNo = [];
-    listOfEnergyNo = [];
+    listOfTasksNo.splice(0, listOfTasksNo.length);
+    listOfEnergyNo.splice(0, listOfEnergyNo.length);
     var newTaskList = [];
     var newEnergyList = [];
-    indexTooMuchEnergy = -1;
     
-    var noMoreLeft = false;
-    while (listOfTasks.length != 0) {
-        var mostEnergy = 0;
-        for (let i = 0; i < listOfTasks.length; i++) {
-            if (listOfEnergy[i] > listOfEnergy[mostEnergy] && listOfEnergy[i] <= userEnergy) {
-                mostEnergy = i;
-            }
-            if (i == listOfTasks.length - 1 && listOfEnergy[mostEnergy] > userEnergy && !noMoreLeft){
-                noMoreLeft = true;
-            }
-        }
-        if (noMoreLeft)
-        {
-            break;
-        }
-        newTaskList.push(listOfTasks[mostEnergy]);
-        newEnergyList.push(listOfEnergy[mostEnergy]);
-        listOfTasks.splice(mostEnergy, 1);
-        listOfEnergy.splice(mostEnergy, 1);
-    }
-
     while (listOfTasks.length != 0) {
         var mostEnergy = 0;
         for (let i = 0; i < listOfTasks.length; i++) {
@@ -99,10 +75,20 @@ function sortTasks() {
                 mostEnergy = i;
             }
         }
-        listOfTasksNo.push(listOfTasks[mostEnergy]);
-        listOfEnergyNo.push(listOfEnergy[mostEnergy]);
-        listOfTasks.splice(mostEnergy, 1);
-        listOfEnergy.splice(mostEnergy, 1);
+        var numMostEnergy = Number.parseInt(listOfEnergy[mostEnergy]);
+        if (numMostEnergy > userEnergy)
+        {
+            listOfTasksNo.push(listOfTasks[mostEnergy]);
+            listOfEnergyNo.push(listOfEnergy[mostEnergy]);
+            listOfTasks.splice(mostEnergy, 1);
+            listOfEnergy.splice(mostEnergy, 1);
+        }
+        else {
+            newTaskList.push(listOfTasks[mostEnergy]);
+            newEnergyList.push(listOfEnergy[mostEnergy]);
+            listOfTasks.splice(mostEnergy, 1);
+            listOfEnergy.splice(mostEnergy, 1);
+        }
     }
 
     listOfTasks = newTaskList;
@@ -119,8 +105,16 @@ function removeTask()
     {
         if (tasks[x].checked)
         {
-            listOfTasks.splice(x, 1);
-            listOfEnergy.splice(x, 1);
+            if (x > listOfTasks.length - 1){
+                x -= listOfTasks.length;
+                listOfTasksNo.splice(x, 1);
+                listOfEnergyNo.splice(x, 1);
+            }
+            else {
+                listOfTasks.splice(x, 1);
+                listOfEnergy.splice(x, 1);
+            }
+
             x--;
             taskLen--;
         }

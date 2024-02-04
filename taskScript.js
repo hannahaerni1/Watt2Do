@@ -50,7 +50,7 @@ function displayTasks() {
         newTask.type = "checkbox";
         var newTaskLabel = document.createElement('label');
         newTaskLabel.htmlFor = newTask;
-        newTaskLabel.appendChild(document.createTextNode(listOfTasksNo[i] + " ~ -" + listOfEnergyNo[i] + "%"));
+        newTaskLabel.appendChild(document.createTextNode(listOfTasksNo[i] + "ᅟᅟᅟᅟ-" + listOfEnergyNo[i] + "%"));
         var space = document.createElement('br');
         taskList.appendChild(newTask);
         taskList.appendChild(newTaskLabel);
@@ -100,25 +100,32 @@ function removeTask()
     var taskList = document.getElementById("taskList");
     
     var tasks = taskList.querySelectorAll('input');
-    var taskLen = tasks.length;
-    for (let x = 0; x < taskLen; x++)
+    var taskDeleteIndex = [];
+    var taskDeleteIndexNo = [];
+    for (let x = 0; x < tasks.length; x++)
     {
         if (tasks[x].checked)
         {
             if (x > listOfTasks.length - 1){
-                x -= listOfTasks.length;
-                listOfTasksNo.splice(x, 1);
-                listOfEnergyNo.splice(x, 1);
+                taskDeleteIndexNo.push(x - listOfTasks.length);
             }
             else {
-                listOfTasks.splice(x, 1);
-                listOfEnergy.splice(x, 1);
+                taskDeleteIndex.push(x);
             }
-
-            x--;
-            taskLen--;
         }
+    }
 
+    for (let i = taskDeleteIndex.length - 1; i >= 0; i--) {
+        var deleteIndex = Number.parseInt(taskDeleteIndex[i]);
+        listOfTasks.splice(deleteIndex, 1);
+        listOfEnergy.splice(deleteIndex, 1);
+    }
+
+    for (let i = taskDeleteIndexNo.length - 1; i >= 0; i--) {
+        var deleteIndex = Number.parseInt(taskDeleteIndexNo[i]);
+        console.log(taskDeleteIndexNo);
+        listOfTasksNo.splice(deleteIndex, 1);
+        listOfEnergyNo.splice(deleteIndex, 1);
     }
 }
 
@@ -126,21 +133,32 @@ function calculateTask() {
     var taskList = document.getElementById("taskList");
     
     var tasks = taskList.querySelectorAll('input');
-    var taskLen = tasks.length;
-    for (let x = 0; x < taskLen; x++)
+    var taskCalculateIndex = [];
+    for (let x = 0; x < tasks.length; x++)
     {
         if (tasks[x].checked)
         {
             if (x < listOfTasks.length){
-                userEnergy = userEnergy - listOfEnergy[x];
-                document.getElementById("energyPercent").innerHTML = userEnergy + "%";
-                changeEnergy();
-                listOfTasks.splice(x, 1);
-                listOfEnergy.splice(x, 1);
-                x--;
-                taskLen--;
+                taskCalculateIndex.push(x);
             }
         }
 
+    }
+
+    var sum = 0;
+    for (let i = 0; i < taskCalculateIndex.length; i++) {
+        sum += Number.parseInt(listOfEnergy[taskCalculateIndex[i]]);
+        console.log(sum);
+    }
+
+    if (sum <= userEnergy){
+        for (let i = taskCalculateIndex.length - 1; i >= 0; i--) {
+            var deleteIndex = Number.parseInt(taskCalculateIndex[i]);
+            userEnergy = userEnergy - listOfEnergy[i];
+            document.getElementById("energyPercent").innerHTML = userEnergy + "%";
+            changeEnergy();
+            listOfTasks.splice(deleteIndex, 1);
+            listOfEnergy.splice(deleteIndex, 1);
+        }
     }
 }

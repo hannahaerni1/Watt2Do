@@ -48,7 +48,8 @@
             <form id="taskForm">
                 <label for="taskList">New Task: </label>
                 <input type="text" id="taskInput" required>
-                <button type="button" onclick="addTask()">Add Task</button>
+                <input type="number" id="energyInput" required>
+                <button type="button" onclick="addTask(),displayTasks()">Add Task</button>
             </form>
             <ul id="taskList">
 

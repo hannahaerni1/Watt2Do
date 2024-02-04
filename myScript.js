@@ -75,4 +75,4 @@ function removeTask()
 const battery = document.getElementById("battery");
 const ctx = battery.getContext("2d");
 
-ctx.fillRect(20, 20, 150, 100);
+ctx.fillRect(0, 0, 150, 300);

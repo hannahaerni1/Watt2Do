@@ -46,13 +46,7 @@ function changeEnergy()
     newEnergy.value = "";
     
     var energyPercent = document.getElementById("energyPercent");
-    while (energyPercent.hasChildNodes()) {
-        energyPercent.removeChild(energyPercent.firstChild);
-    }
-
-    var newEnergyString = document.createElement("p");
-    newEnergyString.textContent = userEnergy + "%";
-    energyPercent.appendChild(newEnergyString);
+    energyPercent.innerText = userEnergy + "%";
 }
 
 function removeTask()

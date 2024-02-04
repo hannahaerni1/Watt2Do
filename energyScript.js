@@ -27,6 +27,8 @@ function drawBattery()
     ctx.fillStyle = "#9CAEE8";
     drawRoundedRectangle(0,20,150,280,15);
     drawRoundedRectangle(37.5,0,75,30,10);  
+    ctx.fillStyle = "#5a70b0";
+    drawRoundedRectangle(10,30,130,260,10);
 }
 
 drawBattery();

@@ -23,11 +23,12 @@ function displayTasks() {
     }
 
     for (let i = 0; i < listOfTasks.length; i++) {
-        var newTask = document.createElement('li');
-        newTask.textContent = listOfTasks[i] + " " + listOfEnergy[i];
+        var newTask = document.createElement('input');
+        newTask.type = "checkbox";
+        var newTaskLabel = document.createElement('label');
+        label = listOfTasks[i] + " " + listOfEnergy[i];
         taskList.appendChild(newTask);
         var babyTask = taskList.lastChild;
         babyTask.style.color = "red";
-        babyTask.type = "checkbox";
     }
 }

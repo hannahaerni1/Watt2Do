@@ -32,12 +32,16 @@
     </style>
 </head>
 <body>
-
+    <center><header style="background-color: #000000; color: #ffffff">
+        <br>
+        <h1>Watt2Do</h1>
+        <br>
+    </header></center>
     <div class="container">
         <div class="left-column">
-            <center><h2 style = "color:#eceded">Battery Column</h2></center>
-            <center><p style = "color:#eceded">This is the small left column.</p></center>
-            <center><canvas id="battery" width="150" height="300"></canvas></center>
+            <center><h2 style = "color:#eceded">Battery Column</h2>
+            <p style = "color:#eceded">This is the small left column.</p>
+            <canvas id="battery" width="150" height="300"></canvas>
             
             <p style = "color:#eceded" id="energyPercent">
                 50%
@@ -45,8 +49,10 @@
             <form style = "color:#eceded" id="changeEnergy">
                 <label for="changeEnergy">New Energy Level: </label>
                 <input type="number" id="newEnergy" required>
-                <button type="button" onclick="buttonEnergy(),displayTasks()">Change Energy</button>
-            </form>
+                <button type="button" 
+                title="Click this button after you have filled in the field on the side from 0 to 100." 
+                onclick="buttonEnergy(),displayTasks()">Change Energy</button>
+            </form></center>
         </div>
 
         <div class="right-column">

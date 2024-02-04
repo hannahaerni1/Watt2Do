@@ -45,8 +45,8 @@ function removeTask()
     {
         if (tasks[x].checked)
         {
-            listOfTasks.splice(x * 3, 3);
-            listOfEnergy.splice(x * 3, 3);
+            listOfTasks.splice(x, 1);
+            listOfEnergy.splice(x, 1);
         }
 
     }

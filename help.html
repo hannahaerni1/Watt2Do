@@ -37,6 +37,9 @@
             background-color: #173056;
             padding: 20px;
             box-sizing: border-box;
+            background-image: url("decorWhite.png");
+            background-size: 60px;
+            background-blend-mode: lighten;
         }
 
         .right-column {
@@ -54,22 +57,61 @@
             height: 50px;
             padding: 25px;
         }
+
+        a:link {
+            color: #ffffff;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: #ffffff;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #c7e0ff;
+            background-color: transparent;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
     <header>
-        <center><h1>Watt2Do</h1></center>
-        <a href="help.html"><img src="help.png" alt="Help Icon" class="helpImage" 
-            title="Need more help? Click to see detailed instructions!"></a>
+        <a href="index.html"><center><h1>Watt2Do</h1></center></a>
+        <img src="help.png" alt="Help Icon" class="helpImage" 
+            title="Need more help? Click to see detailed instructions!">
         <br>
     </header>
     <div class="container">
         <div class="left-column">
-            <p>left</p>
+            <center><h2 style="color:#eceded">Understanding the battery</h2></center>
+            <ul style="color:#eceded;font-size: 20px;padding: 10px">
+                <li>The battery on this side of the page shows how much energy you have.</li><br>
+                <li>The percentage underneath the battery represents how much energy you have.</li><br>
+                <li>To change the amount of energy, the field below can take in a number from 0 to 100.</li><br>
+                <li>When tasks are checked off as "finished", the energy within the bar will automatically decrease.</li><br>
+                <li>The bar will increase when "booster activities" are checked off.</li><br>
+            </ul>
         </div>
 
         <div class="right-column">
-            <p>right</p>
+            <h2>Understanding Tasks</h2>
+            <ul style="font-size: 20px;">
+                <li>Adding a task requires the two fields to be filled: the title and energy.</li><br>
+                <li>The title of the assignment is what describes it.</li><br>
+                <li>The energy of an assignment represents how much energy of the battery it will take to complete.</li><br>
+                <li>After an assignment is added, you can either complete or delete it using the checkbox.</li>
+                    <ul><li>If the task is unable to be added, the energy field may not have been filled in correctly.</li></ul><br>
+                <li>The completed tasks button marks the tasks as finished, getting rid of the energy in the bar.</li>
+                    <ul><li>If the task is unable to be finished, the tasks may exceed the amount of energy in the battery.</li></ul><br>
+                <li>The deleted tasks button gets rid of tasks that will not be completed or were added by mistake.</li>
+            </ul>
+            <br>
+            <p style="font-size: 25px"><strong>Hover over an empty field or button to see what it says!</strong></p>
+            <br>
+            <p>To go back, click the back button or the title at the top of the page.</p>
         </div>
     </div>
 
